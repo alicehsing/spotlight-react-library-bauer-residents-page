@@ -36,3 +36,17 @@
     transform: rotate(360deg);
   }
 }
+
+.bar-chart h2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.resident-data h1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
