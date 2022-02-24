@@ -40,7 +40,44 @@ export function getTotalUserOfEachCarMake(customers) {
     x: key[0],
     y: key[1]
   }));
-  
+
   return finalArr;
 }
 
+export function getGenderBreakdownOfToyotaOwners(customers) {
+  const filteredToyotaArr = customers
+    .filter(customer => customer.car_make === 'Toyota')
+    .reduce((accumulator, customer) => {
+      if (accumulator[customer.gender]) {
+        accumulator[customer.gender]++;
+      } else {
+        accumulator[customer.gender] = 1;
+      }
+    
+      return accumulator;
+    }, {});
+
+  //[{ x: gender, y: 5}]
+  const keysArr = Object.entries(filteredToyotaArr);
+  const finalArr = keysArr.map(key => ({
+    x: key[0],
+    y: key[1],
+  }));
+
+  return finalArr;
+}
+
+
+export function getTotalOfEachGender(customers) {
+  const countingHashMap = customers.reduce((accumulator, customer) => {
+    if (accumulator[customer.gender]) {
+      accumulator[customer.gender]++;
+    } else {
+      accumulator[customer.gender] = 1;
+    }
+
+    return accumulator;
+  }, {});
+
+  return countingHashMap;
+}

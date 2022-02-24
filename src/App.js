@@ -1,15 +1,15 @@
 import DataGrid from 'react-data-grid';
 import data from './data';
 import './App.css';
-import { generateColumns, getTotalUserOfEachCarMake } from './data-utils';
-import { VictoryBar, VictoryChart, VictoryAxis } from 'victory';
+import { generateColumns, getTotalUserOfEachCarMake, getGenderBreakdownOfToyotaOwners } from './data-utils';
+import { VictoryBar, VictoryChart, VictoryAxis, VictoryPie, VictoryLine } from 'victory';
 import { VictoryTheme } from 'victory';
 
 
 export default function App() {
   return (
     <><div className='resident-data'>
-      <h1>Bauer Crest Resident Information</h1>
+      <h1>Bauer Crest Residents Information</h1>
       <DataGrid
         columns={generateColumns(data)}
         rows={data} />
@@ -34,6 +34,7 @@ export default function App() {
             data: { fill: '#c43a31' },
             labels: { fontSize: ({ text }) => text.length > 10 ? 8 : 10 }
           }}
+        
           data={getTotalUserOfEachCarMake(data)}
           labels={({ datum }) => `${datum.y}`}
           animate={{
@@ -42,7 +43,13 @@ export default function App() {
           }}
         />
       </VictoryChart>  
-    
+      <h2>Gender Breakdown of Toyota Owners</h2>
+      <VictoryPie
+        colorScale={['tomato', 'gold', 'navy']}
+        data={getGenderBreakdownOfToyotaOwners(data)}
+        labels={({ datum }) => `${datum.x}: ${datum.y}`} 
+      />
+      
     </div></>
   );
 }
