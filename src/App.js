@@ -8,13 +8,14 @@ import { VictoryTheme } from 'victory';
 
 export default function App() {
   return (
-    <><div>
+    <><div className='resident-data'>
+      <h1>Bauer Crest Resident Information</h1>
       <DataGrid
         columns={generateColumns(data)}
         rows={data} />
     </div>
     <div style={{ height: 1000 }} className="bar-chart">
-      <h2>Total Number of Users Per Car Brand</h2>
+      <h2>Number of Residents by Car Brand</h2>
       <VictoryChart
         theme={VictoryTheme.material}
         domainPadding={{ x: 5 }}
