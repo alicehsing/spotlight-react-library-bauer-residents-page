@@ -11,3 +11,36 @@ export function generateColumns(arr) {
   });
   return columns;
 }
+
+
+/* 
+Output: 
+{
+    Honda: 4,
+    Volvo: 3,
+    Toyota: 2,
+    etc . . .
+}
+*/
+
+export function getTotalUserOfEachCarMake(customers) {
+    
+  const countingHashMap = customers.reduce((accumulator, customer) => {
+    if (accumulator[customer.car_make]) {
+      accumulator[customer.car_make]++;
+    } else {
+      accumulator[customer.car_make] = 1;
+    }
+    
+    return accumulator;
+  }, {});
+  //[{ x: car_make, y: 2 }]
+  const keysArr = Object.entries(countingHashMap);
+  const finalArr = keysArr.map(key => ({
+    x: key[0],
+    y: key[1]
+  }));
+  
+  return finalArr;
+}
+

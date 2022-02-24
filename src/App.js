@@ -1,22 +1,28 @@
 import DataGrid from 'react-data-grid';
 import data from './data';
 import './App.css';
-import { generateColumns } from './data-utils';
-
-// function App() {
-  
-//   return (
-//     <div className="App">
-//     Hello World!
-//     </div>
-//   );
-// }
-
-// export default App;
+import { generateColumns, getTotalUserOfEachCarMake } from './data-utils';
+import { VictoryBar, VictoryChart, } from 'victory';
+import { VictoryTheme } from 'victory';
 
 
 export default function App() {
-  return <DataGrid 
-    columns={generateColumns(data)} 
-    rows={data} />;
+  return (
+    <><div>
+      <DataGrid
+        columns={generateColumns(data)}
+        rows={data} />
+    </div>
+    <div>
+      <VictoryChart
+        theme={VictoryTheme.material}
+        domainPadding={10}>
+        <VictoryBar
+          style={{ data: { fill: '#c43a31' } }}
+          data={getTotalUserOfEachCarMake(data)}
+        />
+      </VictoryChart>  
+    
+    </div></>
+  );
 }
