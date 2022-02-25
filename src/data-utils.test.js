@@ -1,4 +1,8 @@
-import { generateColumns, getTotalUserOfEachCarMake } from './data-utils';
+import { 
+  generateColumns, 
+  getTotalUserOfEachCarMake, 
+  getGenderBreakdownOfToyotaOwners,
+  getTotalOfEachGender } from './data-utils';
 import customers from './data.js';
 
 test('generateColumns function should make a nice array of columns that capitalizes the key and replaces underscore with space and turn them to name property', () => {
@@ -55,5 +59,31 @@ test('getTotalUserOfEachCarMake function', () => {
   ];
 
   const actual = getTotalUserOfEachCarMake(customers);
+  expect(actual).toEqual(expected);
+});
+
+test('getGenderBreakdownOfToyotaOwners function', () => {
+  const expected = [
+    { x: 'Male', y: 2 },
+    { x: 'Female', y: 5 }, 
+    { x: 'Genderfluid', y: 1 }
+  ];
+
+  const actual = getGenderBreakdownOfToyotaOwners(customers);
+  expect(actual).toEqual(expected);
+});
+
+test('getTotalOfEachGender function', () => {
+  const expected = [
+    { x: 'Male', y: 42 },
+    { x: 'Polygender', y: 1 },
+    { x: 'Female', y: 52 },
+    { x: 'Non-binary', y: 1 },
+    { x: 'Agender', y: 1 },
+    { x: 'Genderfluid', y: 1 },
+    { x: 'Genderqueer', y: 2 }
+  ];
+
+  const actual = getTotalOfEachGender(customers);
   expect(actual).toEqual(expected);
 });

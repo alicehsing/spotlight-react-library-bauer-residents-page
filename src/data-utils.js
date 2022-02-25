@@ -63,7 +63,7 @@ export function getGenderBreakdownOfToyotaOwners(customers) {
     x: key[0],
     y: key[1],
   }));
-
+  console.log(finalArr);
   return finalArr;
 }
 
@@ -84,6 +84,6 @@ export function getTotalOfEachGender(customers) {
     x: key[0],
     y: key[1]
   }));
-
+  console.log(finalArr);
   return finalArr;
 }

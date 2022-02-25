@@ -2,9 +2,8 @@ import DataGrid from 'react-data-grid';
 import data from './data';
 import './App.css';
 import { generateColumns, getTotalUserOfEachCarMake, getGenderBreakdownOfToyotaOwners, getTotalOfEachGender } from './data-utils';
-import { VictoryBar, VictoryChart, VictoryAxis, VictoryPie, VictoryLine, VictoryLabel } from 'victory';
+import { VictoryBar, VictoryChart, VictoryAxis, VictoryPie, VictoryLine } from 'victory';
 import { VictoryTheme } from 'victory';
-import { green } from '@material-ui/core/colors';
 
 
 export default function App() {
