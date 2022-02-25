@@ -75,9 +75,15 @@ export function getTotalOfEachGender(customers) {
     } else {
       accumulator[customer.gender] = 1;
     }
-
     return accumulator;
   }, {});
+ 
+  //[{ x: gender, y: 5}]
+  const keysArr = Object.entries(countingHashMap);
+  const finalArr = keysArr.map(key => ({
+    x: key[0],
+    y: key[1]
+  }));
 
-  return countingHashMap;
+  return finalArr;
 }
